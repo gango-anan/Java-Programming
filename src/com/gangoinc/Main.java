@@ -11,10 +11,9 @@ public class Main {
         int principal=0;
         float annualInterestRate=0.0F;
         float monthlyInterestRate=0.0F;
-        byte period=0;
         int numberOfPayments=0;
 
-                Scanner getInput = new Scanner(System.in);
+        Scanner getInput = new Scanner(System.in);
         while(true) {
             System.out.print("Principal ($1k - $1M): ");
             principal = getInput.nextInt();
@@ -34,7 +33,7 @@ public class Main {
 
         while(true) {
             System.out.print("Period (1 - 30 Years): ");
-            period = getInput.nextByte();
+            byte period = getInput.nextByte();
             if(period >=1 && period <= 30) {
                 numberOfPayments = period * MONTHS_IN_YEAR;
                 break;
