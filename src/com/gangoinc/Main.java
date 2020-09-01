@@ -12,6 +12,22 @@ public class Main {
         float annualInterestRate = (float)getNumber("Annual Interest Rate(0 - 30)", 1, 30);
         byte period = (byte)getNumber("Period (1 - 30 Years)", 1, 30);
 
+        printMonthlyPayments(principal, annualInterestRate, period);
+
+        printBalance(principal, annualInterestRate, period);
+
+    }
+
+    public static void printBalance(int principal, float annualInterestRate, byte period) {
+        System.out.println("PAYMENT SCHEDULE");
+        System.out.println("-----------------");
+        for (short month = 1; month <= period *MONTHS_IN_YEAR ; month++) {
+            double balance = calculateBalance(principal, annualInterestRate, period,month);
+            System.out.println(NumberFormat.getCurrencyInstance().format(balance));
+        }
+    }
+
+    public static void printMonthlyPayments(int principal, float annualInterestRate, byte period) {
         double mortgage = calculateMortgage(principal, annualInterestRate, period);
         String formattedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println("");
@@ -19,14 +35,6 @@ public class Main {
         System.out.println("-----------");
         System.out.println("Monthly Payments: " + formattedMortgage);
         System.out.println("");
-
-        System.out.println("PAYMENT SCHEDULE");
-        System.out.println("-----------------");
-        for (short month = 1; month <= period*MONTHS_IN_YEAR ; month++) {
-            double balance = calculateBalance(principal,annualInterestRate,period,month);
-            System.out.println(NumberFormat.getCurrencyInstance().format(balance));
-        }
-
     }
 
     public static double getNumber(String prompt, double min, double max){
