@@ -9,7 +9,6 @@ public class Main {
         final byte MONTHS_IN_YEAR = 12;
         final byte PERCENTAGE = 100;
         int principal=0;
-        float annualInterestRate=0.0F;
         float monthlyInterestRate=0.0F;
         int numberOfPayments=0;
 
@@ -23,7 +22,7 @@ public class Main {
         }
         while(true) {
             System.out.print("Annual Interest Rate(0 - 30): ");
-            annualInterestRate = getInput.nextFloat();
+            float annualInterestRate = getInput.nextFloat();
             if(annualInterestRate > 0 && annualInterestRate <= 30) {
                 monthlyInterestRate = annualInterestRate / PERCENTAGE / MONTHS_IN_YEAR;
                 break;
